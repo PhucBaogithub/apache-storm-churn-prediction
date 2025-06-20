@@ -1,0 +1,5 @@
+,gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Churn
+count,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0,7043.0
+unique,2.0,2.0,2.0,2.0,73.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0,4.0,1.585,6531.0,2.0
+top,Male,0,No,No,1,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,29.85,29.85,No
+freq,3555.0,5.901,3641.0,4933.0,613.0,6361.0,3390.0,3096.0,3498.0,3088.0,3095.0,3473.0,2810.0,2785.0,3875.0,4171.0,2365.0,1.0,11.0,5174.0
