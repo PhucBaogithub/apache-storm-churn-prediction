@@ -357,6 +357,159 @@ def get_customer_search_results():
             'error': str(e)
         }), 500
 
+@app.route('/api/charts')
+def get_available_charts():
+    """Get list of available chart images"""
+    try:
+        charts = []
+        chart_files = {
+            'customer_distribution_by_totalcharges.png': 'Customer Distribution by Total Charges',
+            'average_charges_by_churn.png': 'Average Charges by Churn Status',
+            'churned_customers_piechart.png': 'Churned Customers Distribution'
+        }
+        
+        for filename, title in chart_files.items():
+            file_path = os.path.join(DATA_DIR, filename)
+            if os.path.exists(file_path):
+                charts.append({
+                    'filename': filename,
+                    'title': title,
+                    'url': f'/api/chart/{filename}'
+                })
+        
+        return jsonify({
+            'success': True,
+            'charts': charts
+        })
+        
+    except Exception as e:
+        logger.error(f"Error getting charts: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/chart/<filename>')
+def serve_chart(filename):
+    """Serve chart images"""
+    try:
+        # Security check: only allow specific chart files
+        allowed_files = [
+            'customer_distribution_by_totalcharges.png',
+            'average_charges_by_churn.png', 
+            'churned_customers_piechart.png'
+        ]
+        
+        if filename not in allowed_files:
+            return jsonify({'error': 'Chart not found'}), 404
+            
+        file_path = os.path.join(DATA_DIR, filename)
+        if os.path.exists(file_path):
+            return send_file(file_path, mimetype='image/png')
+        else:
+            return jsonify({'error': 'Chart file not found'}), 404
+            
+    except Exception as e:
+        logger.error(f"Error serving chart: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/filter_customers', methods=['POST'])
+def filter_customers():
+    """Advanced customer filtering with multiple criteria"""
+    try:
+        data = request.get_json()
+        filters = data.get('filters', {})
+        limit = int(data.get('limit', 100))
+        
+        # Load customer data
+        customer_file = os.path.join(DATA_DIR, 'WA_Fn-UseC_-Telco-Customer-Churn.csv')
+        if not os.path.exists(customer_file):
+            return jsonify({
+                'success': False,
+                'error': 'Customer data file not found'
+            }), 404
+        
+        df = pd.read_csv(customer_file)
+        
+        # Apply filters
+        filtered_df = df.copy()
+        
+        # Gender filter
+        if filters.get('gender'):
+            filtered_df = filtered_df[filtered_df['gender'] == filters['gender']]
+            
+        # Senior Citizen filter
+        if filters.get('senior_citizen') is not None:
+            filtered_df = filtered_df[filtered_df['SeniorCitizen'] == int(filters['senior_citizen'])]
+            
+        # Contract filter
+        if filters.get('contract'):
+            filtered_df = filtered_df[filtered_df['Contract'] == filters['contract']]
+            
+        # Internet Service filter
+        if filters.get('internet_service'):
+            filtered_df = filtered_df[filtered_df['InternetService'] == filters['internet_service']]
+            
+        # Churn filter
+        if filters.get('churn'):
+            filtered_df = filtered_df[filtered_df['Churn'] == filters['churn']]
+            
+        # Monthly Charges range filter
+        if filters.get('monthly_charges_min') is not None:
+            filtered_df = filtered_df[filtered_df['MonthlyCharges'] >= float(filters['monthly_charges_min'])]
+        if filters.get('monthly_charges_max') is not None:
+            filtered_df = filtered_df[filtered_df['MonthlyCharges'] <= float(filters['monthly_charges_max'])]
+            
+        # Total Charges range filter  
+        if filters.get('total_charges_min') is not None:
+            # Convert TotalCharges to numeric, handle non-numeric values
+            filtered_df['TotalCharges'] = pd.to_numeric(filtered_df['TotalCharges'], errors='coerce')
+            filtered_df = filtered_df[filtered_df['TotalCharges'] >= float(filters['total_charges_min'])]
+        if filters.get('total_charges_max') is not None:
+            filtered_df['TotalCharges'] = pd.to_numeric(filtered_df['TotalCharges'], errors='coerce')
+            filtered_df = filtered_df[filtered_df['TotalCharges'] <= float(filters['total_charges_max'])]
+            
+        # Tenure range filter
+        if filters.get('tenure_min') is not None:
+            filtered_df = filtered_df[filtered_df['tenure'] >= int(filters['tenure_min'])]
+        if filters.get('tenure_max') is not None:
+            filtered_df = filtered_df[filtered_df['tenure'] <= int(filters['tenure_max'])]
+        
+        # Remove rows with NaN values
+        filtered_df = filtered_df.dropna()
+        
+        # Limit results
+        result_df = filtered_df.head(limit)
+        
+        # Add filter metadata
+        result_data = result_df.to_dict('records')
+        for record in result_data:
+            record['filter_timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Calculate summary statistics
+        summary = {
+            'total_found': len(filtered_df),
+            'showing': len(result_data),
+            'churn_rate': round((filtered_df['Churn'] == 'Yes').sum() / len(filtered_df) * 100, 2) if len(filtered_df) > 0 else 0,
+            'avg_monthly_charges': round(filtered_df['MonthlyCharges'].mean(), 2) if len(filtered_df) > 0 else 0,
+            'avg_total_charges': round(pd.to_numeric(filtered_df['TotalCharges'], errors='coerce').mean(), 2) if len(filtered_df) > 0 else 0
+        }
+        
+        return jsonify({
+            'success': True,
+            'data': result_data,
+            'summary': summary,
+            'filters_applied': filters,
+            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
+        
+    except Exception as e:
+        logger.error(f"Customer filter error: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 @app.route('/download/<data_type>')
 def download_data(data_type):
     """Download CSV files"""

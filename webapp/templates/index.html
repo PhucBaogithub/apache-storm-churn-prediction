@@ -192,6 +192,18 @@
                                 class="px-3 py-1 rounded text-sm">
                                 Customer Search
                             </button>
+                            <button 
+                                @click="activeTab = 'charts'"
+                                :class="activeTab === 'charts' ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-700'"
+                                class="px-3 py-1 rounded text-sm">
+                                Analytics Charts
+                            </button>
+                            <button 
+                                @click="activeTab = 'filter'"
+                                :class="activeTab === 'filter' ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-700'"
+                                class="px-3 py-1 rounded text-sm">
+                                Advanced Filter
+                            </button>
                         </div>
                     </div>
 
@@ -418,6 +430,201 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Analytics Charts Tab -->
+                            <div x-show="activeTab === 'charts'">
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-gray-800 mb-3">Analytics Charts from Storm Topology</h4>
+                                    
+                                    <div x-show="charts.length === 0" class="text-center py-8 text-gray-500">
+                                        Loading charts...
+                                    </div>
+                                    
+                                    <div x-show="charts.length > 0" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                        <template x-for="chart in charts" :key="chart.filename">
+                                            <div class="bg-white rounded-lg simple-border p-4">
+                                                <h5 class="font-semibold text-gray-800 mb-3" x-text="chart.title"></h5>
+                                                <div class="flex justify-center">
+                                                    <img :src="chart.url" :alt="chart.title" 
+                                                         class="max-w-full h-auto rounded shadow-sm"
+                                                         style="max-height: 400px;">
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Advanced Filter Tab -->
+                            <div x-show="activeTab === 'filter'">
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-gray-800 mb-3">Advanced Customer Filter</h4>
+                                    
+                                    <!-- Filter Form -->
+                                    <div class="bg-gray-50 p-6 rounded-lg mb-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                            <!-- Gender Filter -->
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                                                <select x-model="filterForm.filters.gender" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                                    <option value="">All</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Senior Citizen Filter -->
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Senior Citizen</label>
+                                                <select x-model="filterForm.filters.senior_citizen" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                                    <option value="">All</option>
+                                                    <option value="0">No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Contract Filter -->
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Contract</label>
+                                                <select x-model="filterForm.filters.contract" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                                    <option value="">All</option>
+                                                    <option value="Month-to-month">Month-to-month</option>
+                                                    <option value="One year">One year</option>
+                                                    <option value="Two year">Two year</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Internet Service Filter -->
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Internet Service</label>
+                                                <select x-model="filterForm.filters.internet_service" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                                    <option value="">All</option>
+                                                    <option value="DSL">DSL</option>
+                                                    <option value="Fiber optic">Fiber optic</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Churn Filter -->
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Churn Status</label>
+                                                <select x-model="filterForm.filters.churn" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                                    <option value="">All</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Monthly Charges Range -->
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Monthly Charges (Min)</label>
+                                                <input type="number" x-model="filterForm.filters.monthly_charges_min" 
+                                                       placeholder="0" step="0.01" min="0" max="200"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Monthly Charges (Max)</label>
+                                                <input type="number" x-model="filterForm.filters.monthly_charges_max" 
+                                                       placeholder="200" step="0.01" min="0" max="200"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                            </div>
+
+                                            <!-- Tenure Range -->
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Tenure (Min months)</label>
+                                                <input type="number" x-model="filterForm.filters.tenure_min" 
+                                                       placeholder="0" min="0" max="72"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500">
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 flex justify-between">
+                                            <button @click="clearFilters()" class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">
+                                                Clear Filters
+                                            </button>
+                                            <button @click="applyFilters()" :disabled="filterLoading" 
+                                                    class="px-6 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 disabled:opacity-50">
+                                                <span x-show="!filterLoading">Apply Filters</span>
+                                                <span x-show="filterLoading">Filtering...</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Filter Summary -->
+                                    <div x-show="filterSummary" class="bg-blue-50 p-4 rounded-lg mb-4">
+                                        <h5 class="font-semibold text-blue-800 mb-2">Filter Results Summary</h5>
+                                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                            <div>
+                                                <span class="text-blue-600">Total Found:</span>
+                                                <span class="font-semibold" x-text="filterSummary.total_found"></span>
+                                            </div>
+                                            <div>
+                                                <span class="text-blue-600">Churn Rate:</span>
+                                                <span class="font-semibold" x-text="filterSummary.churn_rate + '%'"></span>
+                                            </div>
+                                            <div>
+                                                <span class="text-blue-600">Avg Monthly:</span>
+                                                <span class="font-semibold" x-text="'$' + filterSummary.avg_monthly_charges"></span>
+                                            </div>
+                                            <div>
+                                                <span class="text-blue-600">Avg Total:</span>
+                                                <span class="font-semibold" x-text="'$' + filterSummary.avg_total_charges"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Filter Results -->
+                                    <div x-show="filterResults.length > 0">
+                                        <div class="flex justify-between items-center mb-3">
+                                            <div class="text-sm text-gray-600">
+                                                Showing <span x-text="filterResults.length"></span> of <span x-text="filterSummary.total_found"></span> filtered results
+                                            </div>
+                                            <button @click="downloadFilterResults()" 
+                                                    class="px-3 py-1 bg-gray-900 text-white text-sm rounded hover:bg-gray-800">
+                                                Download Results
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="overflow-x-auto max-h-96 overflow-y-auto">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50 sticky top-0">
+                                                    <tr>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Customer ID</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Gender</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Contract</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Tenure</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Monthly</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Churn</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <template x-for="customer in filterResults" :key="customer.customerID">
+                                                        <tr class="hover:bg-gray-50">
+                                                            <td class="px-3 py-2 text-sm font-medium text-gray-900" x-text="customer.customerID"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="customer.gender"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="customer.Contract"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="customer.tenure + ' months'"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="'$' + parseFloat(customer.MonthlyCharges).toFixed(2)"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="'$' + parseFloat(customer.TotalCharges).toFixed(2)"></td>
+                                                            <td class="px-3 py-2 text-sm">
+                                                                <span :class="customer.Churn === 'Yes' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'"
+                                                                      class="px-2 py-1 rounded-full text-xs font-medium" x-text="customer.Churn"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- No Filter Results Message -->
+                                    <div x-show="filterPerformed && filterResults.length === 0" class="text-center py-8 text-gray-500">
+                                        No customers found matching your filter criteria.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -454,6 +661,27 @@
                 searchLoading: false,
                 searchPerformed: false,
                 searchTotalFound: 0,
+                charts: [],
+                filterForm: {
+                    filters: {
+                        gender: '',
+                        senior_citizen: '',
+                        contract: '',
+                        internet_service: '',
+                        churn: '',
+                        monthly_charges_min: '',
+                        monthly_charges_max: '',
+                        total_charges_min: '',
+                        total_charges_max: '',
+                        tenure_min: '',
+                        tenure_max: ''
+                    },
+                    limit: 100
+                },
+                filterResults: [],
+                filterSummary: null,
+                filterLoading: false,
+                filterPerformed: false,
                 activeTab: 'processed',
                 autoRefresh: true,
                 lastUpdated: null,
@@ -464,6 +692,7 @@
                     this.loadStats();
                     this.refreshData();
                     this.loadStatistics();
+                    this.loadCharts();
                     this.startAutoRefresh();
                 },
 
@@ -611,6 +840,102 @@
                 // Download search results
                 downloadSearchResults() {
                     window.open('/download/search_results', '_blank');
+                },
+
+                // Load charts
+                async loadCharts() {
+                    try {
+                        const response = await fetch('/api/charts');
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            this.charts = data.charts;
+                        }
+                    } catch (error) {
+                        console.error('Error loading charts:', error);
+                    }
+                },
+
+                // Apply filters
+                async applyFilters() {
+                    this.filterLoading = true;
+                    this.filterPerformed = true;
+                    
+                    try {
+                        const response = await fetch('/api/filter_customers', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.filterForm)
+                        });
+
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            this.filterResults = data.data;
+                            this.filterSummary = data.summary;
+                        } else {
+                            alert('Filter error: ' + data.error);
+                            this.filterResults = [];
+                            this.filterSummary = null;
+                        }
+                    } catch (error) {
+                        alert('Connection error: ' + error.message);
+                        this.filterResults = [];
+                        this.filterSummary = null;
+                    } finally {
+                        this.filterLoading = false;
+                    }
+                },
+
+                // Clear filters
+                clearFilters() {
+                    this.filterForm.filters = {
+                        gender: '',
+                        senior_citizen: '',
+                        contract: '',
+                        internet_service: '',
+                        churn: '',
+                        monthly_charges_min: '',
+                        monthly_charges_max: '',
+                        total_charges_min: '',
+                        total_charges_max: '',
+                        tenure_min: '',
+                        tenure_max: ''
+                    };
+                    this.filterResults = [];
+                    this.filterSummary = null;
+                    this.filterPerformed = false;
+                },
+
+                // Download filter results
+                downloadFilterResults() {
+                    // Create CSV content from filter results
+                    if (this.filterResults.length === 0) {
+                        alert('No data to download');
+                        return;
+                    }
+                    
+                    const headers = Object.keys(this.filterResults[0]);
+                    const csvContent = [
+                        headers.join(','),
+                        ...this.filterResults.map(row => 
+                            headers.map(header => 
+                                typeof row[header] === 'string' && row[header].includes(',') 
+                                    ? `"${row[header]}"` 
+                                    : row[header]
+                            ).join(',')
+                        )
+                    ].join('\n');
+                    
+                    const blob = new Blob([csvContent], { type: 'text/csv' });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'filtered_customers.csv';
+                    a.click();
+                    window.URL.revokeObjectURL(url);
                 },
 
                 // Download data
