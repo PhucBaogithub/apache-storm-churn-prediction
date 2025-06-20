@@ -180,6 +180,18 @@
                                 class="px-3 py-1 rounded text-sm">
                                 Predictions
                             </button>
+                            <button 
+                                @click="activeTab = 'statistics'"
+                                :class="activeTab === 'statistics' ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-700'"
+                                class="px-3 py-1 rounded text-sm">
+                                Statistics
+                            </button>
+                            <button 
+                                @click="activeTab = 'search'"
+                                :class="activeTab === 'search' ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-700'"
+                                class="px-3 py-1 rounded text-sm">
+                                Customer Search
+                            </button>
                         </div>
                     </div>
 
@@ -277,6 +289,135 @@
                                     </table>
                                 </div>
                             </div>
+
+                            <!-- Statistics Tab -->
+                            <div x-show="activeTab === 'statistics'">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="font-semibold text-gray-800">Dataset Statistics Summary</h4>
+                                    <button 
+                                        @click="downloadData()"
+                                        class="px-3 py-1 bg-gray-900 text-white text-sm rounded hover:bg-gray-800">
+                                        Download CSV
+                                    </button>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Field</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Count</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Unique</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Top Value</th>
+                                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Frequency</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <template x-for="stat in statisticsData" :key="stat.field">
+                                                <tr class="hover:bg-gray-50">
+                                                    <td class="px-4 py-2 text-sm font-medium text-gray-900" x-text="stat.field"></td>
+                                                    <td class="px-4 py-2 text-sm text-gray-600" x-text="stat.count"></td>
+                                                    <td class="px-4 py-2 text-sm text-gray-600" x-text="stat.unique"></td>
+                                                    <td class="px-4 py-2 text-sm text-gray-600" x-text="stat.top_value"></td>
+                                                    <td class="px-4 py-2 text-sm text-gray-600" x-text="stat.frequency"></td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Customer Search Tab -->
+                            <div x-show="activeTab === 'search'">
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-gray-800 mb-3">Search Customers</h4>
+                                    
+                                    <!-- Search Form -->
+                                    <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Search Query</label>
+                                                <input 
+                                                    type="text" 
+                                                    x-model="searchForm.query"
+                                                    placeholder="Enter search term..."
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Search Field</label>
+                                                <select 
+                                                    x-model="searchForm.field"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent">
+                                                    <option value="all">All Fields</option>
+                                                    <option value="customerID">Customer ID</option>
+                                                    <option value="gender">Gender</option>
+                                                    <option value="Contract">Contract</option>
+                                                    <option value="PaymentMethod">Payment Method</option>
+                                                    <option value="InternetService">Internet Service</option>
+                                                    <option value="Churn">Churn Status</option>
+                                                </select>
+                                            </div>
+                                            <div class="flex items-end">
+                                                <button 
+                                                    @click="searchCustomers()"
+                                                    :disabled="searchLoading"
+                                                    class="w-full px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 disabled:opacity-50">
+                                                    <span x-show="!searchLoading">Search</span>
+                                                    <span x-show="searchLoading">Searching...</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Search Results -->
+                                    <div x-show="searchResults.length > 0">
+                                        <div class="flex justify-between items-center mb-3">
+                                            <div class="text-sm text-gray-600">
+                                                Showing <span x-text="searchResults.length"></span> of <span x-text="searchTotalFound"></span> results
+                                            </div>
+                                            <button 
+                                                @click="downloadSearchResults()"
+                                                class="px-3 py-1 bg-gray-900 text-white text-sm rounded hover:bg-gray-800">
+                                                Download Results
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="overflow-x-auto max-h-96 overflow-y-auto">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50 sticky top-0">
+                                                    <tr>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Customer ID</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Gender</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Contract</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Monthly Charges</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Total Charges</th>
+                                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Churn</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <template x-for="customer in searchResults" :key="customer.customerID">
+                                                        <tr class="hover:bg-gray-50">
+                                                            <td class="px-3 py-2 text-sm font-medium text-gray-900" x-text="customer.customerID"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="customer.gender"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="customer.Contract"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="parseFloat(customer.MonthlyCharges).toFixed(2)"></td>
+                                                            <td class="px-3 py-2 text-sm text-gray-600" x-text="parseFloat(customer.TotalCharges).toFixed(2)"></td>
+                                                            <td class="px-3 py-2 text-sm">
+                                                                <span :class="customer.Churn === 'Yes' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'"
+                                                                      class="px-2 py-1 rounded-full text-xs font-medium" x-text="customer.Churn"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- No Results Message -->
+                                    <div x-show="searchPerformed && searchResults.length === 0" class="text-center py-8 text-gray-500">
+                                        No customers found matching your search criteria.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -303,6 +444,16 @@
                 },
                 processedData: [],
                 predictionsData: [],
+                statisticsData: [],
+                searchResults: [],
+                searchForm: {
+                    query: '',
+                    field: 'all',
+                    limit: 50
+                },
+                searchLoading: false,
+                searchPerformed: false,
+                searchTotalFound: 0,
                 activeTab: 'processed',
                 autoRefresh: true,
                 lastUpdated: null,
@@ -312,6 +463,7 @@
                 init() {
                     this.loadStats();
                     this.refreshData();
+                    this.loadStatistics();
                     this.startAutoRefresh();
                 },
 
@@ -409,9 +561,70 @@
                     }, 5000); // Refresh every 5 seconds
                 },
 
+                // Load statistics data
+                async loadStatistics() {
+                    try {
+                        const response = await fetch('/api/statistics');
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            this.statisticsData = data.data;
+                        }
+                    } catch (error) {
+                        console.error('Error loading statistics:', error);
+                    }
+                },
+
+                // Search customers
+                async searchCustomers() {
+                    this.searchLoading = true;
+                    this.searchPerformed = true;
+                    
+                    try {
+                        const response = await fetch('/api/search_customers', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.searchForm)
+                        });
+
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            this.searchResults = data.data;
+                            this.searchTotalFound = data.total_found;
+                        } else {
+                            alert('Search error: ' + data.error);
+                            this.searchResults = [];
+                            this.searchTotalFound = 0;
+                        }
+                    } catch (error) {
+                        alert('Connection error: ' + error.message);
+                        this.searchResults = [];
+                        this.searchTotalFound = 0;
+                    } finally {
+                        this.searchLoading = false;
+                    }
+                },
+
+                // Download search results
+                downloadSearchResults() {
+                    window.open('/download/search_results', '_blank');
+                },
+
                 // Download data
                 downloadData() {
-                    const dataType = this.activeTab === 'processed' ? 'processed' : 'predictions';
+                    let dataType;
+                    if (this.activeTab === 'processed') {
+                        dataType = 'processed';
+                    } else if (this.activeTab === 'predictions') {
+                        dataType = 'predictions';
+                    } else if (this.activeTab === 'statistics') {
+                        dataType = 'statistics';
+                    } else {
+                        dataType = 'customer_data';
+                    }
                     window.open(`/download/${dataType}`, '_blank');
                 }
             }

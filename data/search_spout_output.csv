@@ -1,51 +1,51 @@
 customerID,gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Churn,search_timestamp,search_query,spout_id
-2840-XANRC,Male,1,Yes,No,24,Yes,No,Fiber optic,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,93.15,2231.05,Yes,2025-06-20 14:24:01,sample_search,customer_search_spout
-7799-DSEWS,Male,0,No,No,18,Yes,No,DSL,Yes,No,Yes,Yes,Yes,No,Month-to-month,Yes,Electronic check,68.35,1299.8,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-7901-IIDQV,Male,0,No,No,24,Yes,Yes,DSL,No,No,No,Yes,No,No,One year,No,Bank transfer (automatic),54.6,1242.25,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-2575-GFSOE,Female,0,Yes,Yes,7,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,69.0,506.9,Yes,2025-06-20 14:24:01,sample_search,customer_search_spout
-9705-IOVQQ,Male,1,Yes,Yes,61,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,Yes,One year,No,Electronic check,99.0,5969.3,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0731-EBJQB,Female,0,Yes,Yes,52,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,20.4,1090.65,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-3786-WOVKF,Female,1,Yes,No,72,Yes,Yes,Fiber optic,Yes,Yes,No,No,Yes,Yes,One year,Yes,Bank transfer (automatic),106.85,7677.4,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-5543-QDCRY,Male,0,No,No,4,Yes,No,DSL,No,No,No,No,Yes,No,Month-to-month,Yes,Electronic check,56.4,234.85,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-1403-LKLIK,Female,0,Yes,Yes,33,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,20.1,579.4,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-6821-JPCDC,Female,0,Yes,No,48,Yes,No,Fiber optic,No,Yes,Yes,No,Yes,Yes,One year,Yes,Electronic check,97.05,4692.95,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-2452-KDRRH,Male,1,No,No,67,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),101.4,6841.05,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0374-FIUCA,Male,0,Yes,No,65,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),20.4,1414.45,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-7272-QDCKA,Male,0,No,No,28,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,Yes,One year,No,Electronic check,100.2,2688.45,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-8510-BBWMU,Female,0,No,No,41,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,19.75,806.95,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-6350-XFYGW,Male,1,No,No,4,Yes,No,Fiber optic,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,94.75,422.4,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-8873-TMKGR,Male,0,No,No,29,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,19.1,529.5,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-1754-GKYPY,Male,1,Yes,No,22,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),89.75,1938.9,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0585-EGDDA,Male,0,Yes,No,40,Yes,No,Fiber optic,No,Yes,Yes,No,No,No,Month-to-month,Yes,Electronic check,80.0,3168.75,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0219-QAERP,Male,0,Yes,No,30,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Credit card (automatic),19.8,576.65,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-5348-CAGXB,Male,0,No,No,12,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,No,Month-to-month,Yes,Electronic check,89.55,1021.75,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-7268-IGMFD,Male,1,No,No,18,Yes,Yes,Fiber optic,No,No,Yes,Yes,Yes,No,Month-to-month,No,Bank transfer (automatic),93.9,1743.9,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-4589-IUAJB,Male,0,Yes,No,70,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),24.25,1724.15,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0390-DCFDQ,Female,1,Yes,No,1,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,70.45,70.45,Yes,2025-06-20 14:24:01,sample_search,customer_search_spout
-8670-MEFCP,Female,0,Yes,Yes,36,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),92.9,3379.25,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-6686-YPGHK,Male,1,No,No,47,Yes,No,Fiber optic,Yes,No,No,No,No,Yes,Month-to-month,No,Mailed check,85.5,4042.3,Yes,2025-06-20 14:24:01,sample_search,customer_search_spout
-6615-ZGEDR,Male,0,No,No,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,19.7,19.7,Yes,2025-06-20 14:24:01,sample_search,customer_search_spout
-3549-ZTMNH,Male,0,Yes,Yes,12,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),24.0,269.65,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-2005-DWQZJ,Female,0,Yes,Yes,8,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,19.05,201.7,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-7055-JCGNI,Female,0,No,No,70,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),111.95,7795.95,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-4583-PARNH,Male,1,Yes,No,16,Yes,No,Fiber optic,No,No,Yes,Yes,No,Yes,Month-to-month,Yes,Electronic check,91.55,1540.05,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-4301-VVZKA,Male,0,Yes,No,16,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,75.4,1189.4,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-6732-VAILE,Male,0,Yes,Yes,70,Yes,Yes,DSL,No,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),85.95,5931.75,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0292-WEGCH,Female,0,Yes,Yes,54,Yes,Yes,DSL,No,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,86.2,4524.05,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-7184-LRUUR,Female,0,No,No,22,Yes,No,DSL,No,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),65.25,1441.8,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-2424-WVHPL,Male,1,No,No,1,Yes,No,Fiber optic,No,No,No,Yes,No,No,Month-to-month,No,Electronic check,74.7,74.7,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-5055-BRMNE,Female,0,Yes,Yes,67,Yes,Yes,Fiber optic,Yes,No,No,Yes,Yes,Yes,Two year,No,Credit card (automatic),106.7,7009.5,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-4770-UEZOX,Male,0,No,No,2,Yes,No,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,74.75,144.8,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0635-WKOLD,Male,0,Yes,No,40,Yes,Yes,DSL,No,Yes,No,Yes,Yes,No,One year,No,Credit card (automatic),70.75,2921.75,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-6976-BWGLQ,Female,0,Yes,Yes,72,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),25.2,1787.35,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0679-TDGAK,Male,0,Yes,Yes,50,Yes,No,DSL,Yes,No,No,Yes,Yes,Yes,One year,No,Electronic check,75.5,4025.6,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-6519-ZHPXP,Female,0,Yes,Yes,72,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),108.3,7679.65,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-9399-APLBT,Female,0,Yes,Yes,1,Yes,No,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,74.7,74.7,Yes,2025-06-20 14:24:01,sample_search,customer_search_spout
-7005-CCBKV,Male,0,No,No,6,Yes,No,Fiber optic,No,Yes,No,No,No,Yes,Month-to-month,Yes,Electronic check,84.4,556.35,Yes,2025-06-20 14:24:01,sample_search,customer_search_spout
-5753-QQWPW,Female,0,No,No,28,Yes,No,DSL,Yes,Yes,No,Yes,No,No,One year,Yes,Electronic check,59.9,1654.7,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0793-TWELN,Female,0,No,No,4,Yes,Yes,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,80.15,319.85,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-3569-VLDHH,Male,0,Yes,Yes,66,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,No,One year,Yes,Electronic check,75.1,5013,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-4615-PIVVU,Female,0,No,No,42,Yes,No,DSL,No,No,Yes,Yes,No,Yes,Two year,No,Credit card (automatic),66.5,2762.75,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-3298-QEICA,Female,0,Yes,Yes,23,No,No phone service,DSL,Yes,No,No,Yes,No,No,Two year,No,Mailed check,34.6,813.45,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-0508-OOLTO,Female,0,Yes,Yes,2,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,71.65,135.75,No,2025-06-20 14:24:01,sample_search,customer_search_spout
-7159-NOKYQ,Male,0,Yes,No,67,Yes,Yes,Fiber optic,No,Yes,Yes,No,No,Yes,Two year,Yes,Electronic check,93.15,6368.2,No,2025-06-20 14:24:01,sample_search,customer_search_spout
+8050-DVOJX,Male,1,No,No,49,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No,Yes,Two year,No,Credit card (automatic),81.35,4060.9,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+1304-NECVQ,Female,1,No,No,2,Yes,Yes,Fiber optic,No,No,Yes,No,No,No,Month-to-month,Yes,Electronic check,78.55,149.55,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+6124-ACRHJ,Female,0,No,No,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,19.75,19.75,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8155-IBNHG,Female,0,Yes,No,24,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),75.4,1747.85,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+9822-WMWVG,Female,0,No,No,41,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,No,Month-to-month,Yes,Electronic check,106.5,4282.4,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+2722-VOJQL,Male,0,No,No,64,Yes,Yes,Fiber optic,No,Yes,No,Yes,Yes,Yes,One year,Yes,Credit card (automatic),105.65,6903.1,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+0666-UXTJO,Male,1,Yes,No,34,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,Month-to-month,Yes,Credit card (automatic),85.2,2874.45,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8051-HJRLT,Female,1,No,No,1,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,70.55,70.55,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+2452-KDRRH,Male,1,No,No,67,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),101.4,6841.05,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8400-WZICQ,Female,0,Yes,Yes,55,Yes,No,DSL,Yes,Yes,No,No,No,No,Month-to-month,No,Electronic check,55.7,3131.8,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+0536-BGFMZ,Female,0,Yes,No,28,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,20.5,563.05,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+0455-ENTCR,Male,0,Yes,No,66,Yes,Yes,DSL,Yes,Yes,No,Yes,Yes,Yes,Two year,No,Electronic check,85.25,5538.35,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+7629-WIXZF,Female,0,No,No,7,Yes,No,DSL,Yes,No,No,No,No,Yes,One year,Yes,Electronic check,59.1,369.25,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+3312-ZWLGF,Male,1,Yes,No,29,Yes,Yes,Fiber optic,No,No,No,Yes,No,No,Month-to-month,Yes,Electronic check,79.3,2414.55,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+9912-GVSEQ,Female,1,Yes,No,26,Yes,Yes,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,Yes,Electronic check,93.85,2381.55,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+2220-IAHLS,Female,0,No,No,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),19.4,19.4,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8259-NFJTV,Female,0,Yes,Yes,7,No,No phone service,DSL,Yes,No,No,Yes,No,No,Month-to-month,No,Mailed check,34.65,246.6,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+5834-ASPWA,Male,0,No,No,1,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,75.45,75.45,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+8149-AIQCG,Male,0,No,No,39,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),73.15,2730.85,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+2925-MXLSX,Female,0,No,No,30,Yes,Yes,DSL,No,Yes,Yes,No,Yes,No,One year,Yes,Credit card (automatic),68.95,2038.7,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+9351-LZYGF,Female,0,Yes,No,42,Yes,Yes,DSL,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),66.4,2727.8,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+9782-LGXMC,Female,0,Yes,Yes,49,Yes,No,DSL,Yes,No,Yes,Yes,No,No,Month-to-month,No,Bank transfer (automatic),61.75,3024.15,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+4163-NCJAK,Female,0,Yes,No,46,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Bank transfer (automatic),24.45,1066.15,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+9695-IDRZR,Female,0,No,Yes,34,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),116.15,3946.9,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+4403-BWPAY,Male,0,No,No,14,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Credit card (automatic),24.8,321.7,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8999-BOHSE,Female,1,No,No,11,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Bank transfer (automatic),89.7,1047.7,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+4291-HYEBC,Female,1,Yes,Yes,28,No,No phone service,DSL,No,Yes,No,No,No,Yes,One year,Yes,Electronic check,39.1,1096.6,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+3737-GCSPV,Female,0,Yes,No,11,Yes,Yes,Fiber optic,Yes,No,No,Yes,Yes,No,Month-to-month,Yes,Credit card (automatic),96.2,1222.05,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+9909-DFRJA,Female,0,No,No,26,Yes,No,Fiber optic,Yes,No,Yes,Yes,No,Yes,One year,Yes,Bank transfer (automatic),95.85,2475.35,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8065-QBYTO,Female,1,No,No,71,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,No,One year,Yes,Credit card (automatic),99.65,7181.25,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+0799-DDIHE,Female,0,Yes,Yes,15,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,No,Electronic check,46.3,639.45,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+3373-YZZYM,Male,0,Yes,Yes,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,19.2,19.2,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8992-JQYUN,Male,0,Yes,No,1,No,No phone service,DSL,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,50.35,50.35,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+6728-CZFEI,Female,0,No,No,15,Yes,No,DSL,No,No,No,No,Yes,No,One year,No,Mailed check,56.15,931.9,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+3239-TPHPZ,Female,0,Yes,No,12,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,20.05,264.55,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+2921-XWDJH,Female,1,Yes,No,38,Yes,No,Fiber optic,Yes,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,83.45,3147.15,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8280-MQRQN,Female,0,No,No,1,Yes,No,DSL,No,No,Yes,No,No,No,Month-to-month,Yes,Mailed check,50.45,50.45,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+2947-DOMLJ,Male,0,No,Yes,1,Yes,No,DSL,Yes,No,No,No,No,No,Month-to-month,No,Mailed check,50.6,50.6,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+8739-QOTTN,Female,0,Yes,No,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,20.35,41.85,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+1934-MKPXS,Male,0,Yes,Yes,33,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Credit card (automatic),20.1,620.55,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+2410-CIYFZ,Male,0,No,Yes,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,20.4,42.9,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+2985-FMWYF,Female,0,No,No,23,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,93.5,2341.55,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+5288-AHOUP,Male,1,No,No,11,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,78.5,874.2,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+3518-PZXZQ,Female,0,Yes,No,1,Yes,No,DSL,No,No,No,No,Yes,No,Month-to-month,Yes,Mailed check,55.3,55.3,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+6956-SMUCM,Female,0,No,No,3,Yes,No,Fiber optic,Yes,No,Yes,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),99.0,287.4,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+2959-FENLU,Female,0,No,No,9,Yes,No,Fiber optic,No,No,Yes,No,No,Yes,Month-to-month,Yes,Credit card (automatic),85.3,781.4,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+8782-NUUOL,Male,0,No,No,60,Yes,No,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,No,Mailed check,79.0,4801.1,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+4250-ZBWLV,Male,0,No,No,68,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,One year,No,Electronic check,108.45,7176.55,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout
+3521-HTQTV,Male,0,No,No,34,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),26.1,980.35,No,2025-06-20 14:42:30,sample_search,customer_search_spout
+9172-ANCRX,Female,0,No,No,10,Yes,Yes,Fiber optic,Yes,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,98.7,973.25,Yes,2025-06-20 14:42:30,sample_search,customer_search_spout

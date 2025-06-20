@@ -50,3 +50,16 @@ logs/
 
 # Model files
 # models/*.pkl
+
+# Cache and temporary files
+.ipynb_checkpoints/
+*.tmp
+*.temp
+
+# Flask
+instance/
+.webassets-cache
+
+# Database
+*.db
+*.sqlite3

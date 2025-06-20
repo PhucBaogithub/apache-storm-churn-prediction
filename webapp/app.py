@@ -217,6 +217,146 @@ def get_statistics():
             'error': str(e)
         }), 500
 
+@app.route('/api/statistics')
+def get_statistics_data():
+    """Get statistics summary data"""
+    try:
+        stats_file = os.path.join(DATA_DIR, 'statistics_summary.csv')
+        if os.path.exists(stats_file):
+            df = pd.read_csv(stats_file)
+            
+            # Convert DataFrame to a more readable format
+            stats_data = []
+            for col in df.columns:
+                stats_data.append({
+                    'field': col,
+                    'count': df[col].iloc[0] if len(df) > 0 else 0,
+                    'unique': df[col].iloc[1] if len(df) > 1 else 0,
+                    'top_value': df[col].iloc[2] if len(df) > 2 else '',
+                    'frequency': df[col].iloc[3] if len(df) > 3 else 0
+                })
+            
+            return jsonify({
+                'success': True,
+                'data': stats_data,
+                'last_updated': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Statistics file not found'
+            }), 404
+            
+    except Exception as e:
+        logger.error(f"Error reading statistics: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/search_customers', methods=['POST'])
+def search_customers():
+    """Search customers from the main dataset"""
+    try:
+        data = request.get_json()
+        search_query = data.get('query', '').strip().lower()
+        search_field = data.get('field', 'all')
+        limit = int(data.get('limit', 50))
+        
+        # Load customer data
+        customer_file = os.path.join(DATA_DIR, 'WA_Fn-UseC_-Telco-Customer-Churn.csv')
+        if not os.path.exists(customer_file):
+            return jsonify({
+                'success': False,
+                'error': 'Customer data file not found'
+            }), 404
+        
+        df = pd.read_csv(customer_file)
+        
+        # Filter data based on search query
+        if search_query and search_field != 'all':
+            if search_field in df.columns:
+                # Search in specific field
+                mask = df[search_field].astype(str).str.lower().str.contains(search_query, na=False)
+                filtered_df = df[mask]
+            else:
+                return jsonify({
+                    'success': False,
+                    'error': f'Field {search_field} not found'
+                }), 400
+        elif search_query:
+            # Search in all text fields
+            text_columns = ['customerID', 'gender', 'Partner', 'Dependents', 'PhoneService', 
+                          'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup',
+                          'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies',
+                          'Contract', 'PaperlessBilling', 'PaymentMethod', 'Churn']
+            
+            mask = pd.Series([False] * len(df))
+            for col in text_columns:
+                if col in df.columns:
+                    mask |= df[col].astype(str).str.lower().str.contains(search_query, na=False)
+            
+            filtered_df = df[mask]
+        else:
+            # No search query, return recent records
+            filtered_df = df.tail(limit)
+        
+        # Limit results
+        result_df = filtered_df.head(limit)
+        
+        # Add search metadata
+        result_data = result_df.to_dict('records')
+        for record in result_data:
+            record['search_timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            record['search_query'] = search_query
+        
+        return jsonify({
+            'success': True,
+            'data': result_data,
+            'total_found': len(filtered_df),
+            'showing': len(result_data),
+            'search_query': search_query,
+            'search_field': search_field,
+            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
+        
+    except Exception as e:
+        logger.error(f"Customer search error: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/customer_search_results')
+def get_customer_search_results():
+    """Get saved customer search results"""
+    try:
+        search_file = os.path.join(DATA_DIR, 'customer_search_results.csv')
+        if os.path.exists(search_file):
+            df = pd.read_csv(search_file)
+            
+            # Get latest 100 records
+            latest_data = df.tail(100).to_dict('records')
+            
+            return jsonify({
+                'success': True,
+                'data': latest_data,
+                'total_records': len(df),
+                'last_updated': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Customer search results file not found'
+            }), 404
+            
+    except Exception as e:
+        logger.error(f"Error reading customer search results: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 @app.route('/download/<data_type>')
 def download_data(data_type):
     """Download CSV files"""
@@ -224,7 +364,9 @@ def download_data(data_type):
         file_mapping = {
             'processed': 'processed_churn.csv',
             'predictions': 'predicted_churn.csv',
-            'customer_data': 'processed_customer_data.csv'
+            'customer_data': 'processed_customer_data.csv',
+            'statistics': 'statistics_summary.csv',
+            'search_results': 'customer_search_results.csv'
         }
         
         filename = file_mapping.get(data_type)
@@ -246,7 +388,7 @@ if __name__ == '__main__':
     os.makedirs(DATA_DIR, exist_ok=True)
     
     print("🚀 Starting Flask Churn Prediction Web App...")
-    print("📊 Dashboard: http://localhost:5000")
+    print("📊 Dashboard: http://localhost:5001")
     print("🔧 Models loaded:", "✅" if predictor.model else "❌")
     
     app.run(debug=True, host='0.0.0.0', port=5001) 
