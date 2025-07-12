@@ -331,7 +331,8 @@ For questions or issues, please:
 
 ## Author
 
-- **Your Name** - [PhucBaogithub](https://github.com/PhucBaogithub)
+Name: Phúc Bảo
+Email: baominecraft12344@gmail.com
 
 ---
 
