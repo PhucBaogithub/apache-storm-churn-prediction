@@ -40,8 +40,8 @@ Data Source (CSV) -> Storm Spout -> Storm Bolt -> ML Prediction -> Flask UI
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/storm-churn-prediction.git
-cd storm-churn-prediction
+git clone https://github.com/PhucBaogithub/apache-storm-churn-prediction.git
+cd apache-storm-churn-prediction
 ```
 
 ### 2. Create virtual environment
@@ -331,7 +331,7 @@ For questions or issues, please:
 
 ## Author
 
-- **Your Name** - [GitHub Profile](https://github.com/your-username)
+- **Your Name** - [PhucBaogithub](https://github.com/PhucBaogithub)
 
 ---
 
